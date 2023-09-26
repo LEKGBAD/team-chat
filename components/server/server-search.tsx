@@ -29,10 +29,10 @@ const ServerSearch = ({data}:ServerSearchProps) => {
                 setOpen(prev=>!prev)
             }
         }
-        document.addEventListener("keydown",down)
+        window.addEventListener("keydown",down)
 
         return ()=>{
-            document.removeEventListener("keydown",down)
+            window.removeEventListener("keydown",down)
         }
     },[])
 
