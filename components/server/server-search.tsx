@@ -23,7 +23,7 @@ const ServerSearch = ({data}:ServerSearchProps) => {
     const params=useParams();
 
     useEffect(() => {
-    const down = (e: KeyboardEvent) => {
+    const down:{(e:KeyboardEvent):void} = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen((open) => !open);
