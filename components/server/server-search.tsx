@@ -22,19 +22,17 @@ const ServerSearch = ({data}:ServerSearchProps) => {
     const router=useRouter();
     const params=useParams();
 
-    useEffect(()=>{
-        const down=(e:KeyboardEvent)=>{
-            if(e.key==="k" && (e.metaKey || e.ctrlKey)){
-                e.preventDefault()
-                setOpen(prev=>!prev)
-            }
-        }
-        window.addEventListener("keydown",down)
+    useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    }
 
-        return ()=>{
-            window.removeEventListener("keydown",down)
-        }
-    },[])
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down)
+  }, []);
 
     const onClick=({id,type}:{id:string,type:"channel"|"member"})=>{
         setOpen(false);
